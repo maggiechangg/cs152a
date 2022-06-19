@@ -1,0 +1,24 @@
+<style> 
+    h3{
+    color: #5d5746;
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    font-weight: 500
+    }
+
+</style>
+
+<h3>Show Information containing <%= id %> </h3>
+
+<% for (studio of id) {%>
+    <h3> <%= studio.name %></h3> 
+    <!-- <img src="<%= studio.image %>"
+        alt="movie image"
+        width="300"
+        height="300"
+    > -->
+<% } %> 
+
+
+
+
+
