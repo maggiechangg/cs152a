@@ -1,22 +1,61 @@
 <style> 
+    h2{
+        color: #5d5746;
+        font-family:Verdana, Geneva, Tahoma, sans-serif;
+        font-weight: 500;
+     text-align: center;
+    }
+    
     h3{
-    color: #5d5746;
-    font-family:Verdana, Geneva, Tahoma, sans-serif;
-    font-weight: 500
+        color: #5d5746;
+        font-family:Verdana, Geneva, Tahoma, sans-serif;
+        font-weight: bold;
+        text-align: center;
+    }
+
+    p{
+        text-align: left;
+        color: #7a725c;
+        font-family:Verdana, Geneva, Tahoma, sans-serif;
+
+    }
+
+    .movieInformation{
+        text-align: left;
+        color: #7a725c;
+        font-family:Verdana, Geneva, Tahoma, sans-serif;
+        font-weight: bold;
+   
+    }
+    
+    .center {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        width: 50%;
     }
 
 </style>
 
-<h3>Show Information containing <%= id %> </h3>
+<h2>Show Information containing <%= movie.id %> </h2>
+<hr> 
 
-<% for (studio of id) {%>
-    <h3> <%= studio.name %></h3> 
-    <!-- <img src="<%= studio.image %>"
-        alt="movie image"
-        width="300"
-        height="300"
-    > -->
-<% } %> 
+<h3> <%= movie.title %></h3> 
+<h3> <%= movie.original_title %></h3>
+<p> 
+    <Text class="movieInformation"> Director: </Text> <%= movie.director %>       
+    <br> 
+    <Text class="movieInformation"> Release Year: </Text><%= movie.release_date %>
+    <br> 
+    <Text class="movieInformation"> Movie Description: </Text> <%= movie.description %>
+</p>
+
+<img 
+    class="center"   
+    src= "<%= movie.image %>"
+    alt="Movie Image"
+/>
+
 
 
 
