@@ -113,6 +113,19 @@ app.post('/ghibli',
     }
   })
 
+const family = [
+    {name:'Maggie',age:20, origin: 'USA'},
+    {name:'Pony',age:57, origin: 'Taiwan'},
+    {name:'Stanley',age:59, origin: 'Hong Kong'},
+    {name:'Yuki',age:8, origin: 'USA'},
+    
+  ];
+  
+app.get('/showFamily',
+    (req,res,next) => {
+      res.locals.family = family;
+      res.render('showFamily');
+    })
 
 app.get('/uploadDB',
   async (req,res,next) => {
