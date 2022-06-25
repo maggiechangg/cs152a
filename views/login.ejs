@@ -1,35 +1,42 @@
-<div class="row">
-      
-    <div class="col-sm-5">
-        <h2>Login</h2>
-        <form method="post" action="/login">
-            username: <input type="text"
-                             autocomplete="username"
-                             name="username"><br>
-            passphrase: <input  type="password"
-                                autocomplete="passphrase"
-                                name="passphrase"><br>
-            <input type="submit">
-        </form>
-    </div>
-  
-    <div class="col-sm-2" style="text-align:center">
-        OR
-    </div>
-  
-    <div class="col-sm-5">
-        <h2>Signup</h2>
-        <form method="post" action="/signup">
-            username: <input type="text" autocomplete="username" name="username"><br>
-            password
-               <input type="password" autocomplete="passphrase" name="passphrase"><br>
-            confirm password:
-                <input type="password" name="passphrase2"><br>
+<style>
+    h2{
+        color: #ADE8F4;
+        text-align: center;
+    }
+    
+    hr{
+        color: #ADE8F4;
+        height: 10px;
+        border-top: 4px solid;
+    }
+
+    .information{
+        color: #ADE8F4;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        width: 400px;
+        line-height: 26px;
+        margin-bottom: 10px;
+        margin: auto;
+
+    }
+
+
+</style> 
+
+
+
+<h2>Signup</h2>
+<hr> 
+
+<form method="post" action="/signup" class="information">
+    Riot Username: <input type="text" autocomplete="username" name="username"><br>
+    Create Password:
+        <input type="password" autocomplete="passphrase" name="passphrase"><br>
+    Confirm password:
+        <input type="password" name="passphrase2"><br> 
+    
           
-            age: <input type="number" name="age"><br>
-          
-          
-            <input type="submit">
-        </form>
-    </div>
-</div>
+    <input type="submit">
+</form>

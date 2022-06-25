@@ -46,6 +46,9 @@ const isLoggedIn = (req,res,next) => {
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
+var bioRouter = require('./routes/bio');
+// var ghibliRouter = require('./routes/ghibli');
+// var runesRouter = require('./routes/runes');
 
 var app = express();
 
@@ -87,12 +90,65 @@ app.use(layouts);
 app.use(auth);
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
+app.use("/bio", bioRouter);
+// app.use("/ghibli", ghibliRouter);
+// app.use("/runes", runesRouter);
 
 
-app.get("/bio", function(req, res, next) {
-  res.render("bio");
-});
+//Runes Page Enter a Champion
+const RunesHome = require('./models/Runes');
 
+app.get('/runesHome',(req,res,next) => {
+  res.render('runesHome')
+})
+
+app.post('/runesHome',
+  isLoggedIn,
+  async (req,res,next) => {
+    try {
+      const championName = req.body.championName;
+      const championObj = {
+        userId:res.locals.user._id,
+        championName: championName,
+      }
+      const championItem = new RunesHome(championObj);
+      await championItem.save(); 
+      res.redirect('/showRunesHome');
+    }catch(err){
+      next(err);
+    }
+  }
+)
+
+app.get('/showRunesHome',
+        isLoggedIn,
+  async (req,res,next) => {
+   try {
+    const chapmionitems = await RunesHome.find({userId:res.locals.user._id});
+    res.locals.championitems = chapmionitems
+    res.render('showRunesHome')
+    //res.json(todoitems);
+   }catch(e){
+    next(e);
+   }
+  }
+)
+
+app.get('/deleteChampionItem/:itemId',
+    isLoggedIn,
+    async (req,res,next) => {
+      try {
+        const itemId = req.params.itemId;
+        await RunesHome.deleteOne({_id:itemId});
+        res.redirect('/showRunesHome');
+      } catch(e){
+        next(e);
+      }
+    }
+)
+
+
+//Ghibli Example API
 app.get('/ghibli',(req,res,next) => {
   res.render('ghibli')
 })
@@ -112,20 +168,6 @@ app.post('/ghibli',
       console.error(err)      
     }
   })
-
-const family = [
-    {name:'Maggie',age:20, origin: 'USA'},
-    {name:'Pony',age:57, origin: 'Taiwan'},
-    {name:'Stanley',age:59, origin: 'Hong Kong'},
-    {name:'Yuki',age:8, origin: 'USA'},
-    
-  ];
-  
-app.get('/showFamily',
-    (req,res,next) => {
-      res.locals.family = family;
-      res.render('showFamily');
-    })
 
 app.get('/uploadDB',
   async (req,res,next) => {

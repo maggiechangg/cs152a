@@ -9,11 +9,27 @@
     <style> 
       p{text-align: center;}
       .navbar-custom{
-        background-color: #E6DDC6; 
+        background-color: #14213D; 
       }
 
       body{
-        background-color: #FEF7DC;
+        background-color: #14213D;
+      }
+    
+      .textColor{
+        color: #CAF0F8;
+      }
+
+      .textColor:hover{
+        color: #CAF0F8;
+      }
+
+      .mint{
+        color: #CAF0F8;
+      }
+      
+      .mint:hover{
+        color: #CAF0F8;
       }
 
     
@@ -23,8 +39,8 @@
   <body class="container">
     <nav class="navbar navbar-expand-lg navbar-custom">
       <div class="container-fluid">
-        <a class="navbar-brand" href="/">
-          CS152a Summer 2022
+        <a class="navbar-brand mint">
+          Mint 
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
@@ -32,37 +48,19 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
             <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="/">Home</a>
+              <a class="nav-link active" aria-current="page" style="color:#CAF0F8" href="/runesHome">Home</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="/bio">Bio</a>
-            </li>
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                Studio Ghibli
-              </a>
-              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <li><a class="dropdown-item" href="/ghibli">Movie Information</a></li>
-                <li><a class="dropdown-item" href="/#">Something</a></li>
-                <li><hr class="dropdown-divider"></li>
-                <li><a class="dropdown-item" href="#">Something else here</a></li>
-              </ul>
+              <a class="nav-link textColor" href="/">Champions</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link disabled">Disabled</a>
+              <a class="nav-link textColor" href="/">About the App</a>
             </li>
-            
-            <% if (!loggedIn) {%>
-              <li class="nav-item">
-                <a class="nav-link" href="/login">Login/Signup</a>
-              </li>
-              <% } else { %>
-              
-                
-                <li class="nav-item">
-                  <a class="nav-link" href="/logout">Logout <%= username %></a>
-                </li>
-              <% } %>
+            <li class="nav-item">
+              <a class="nav-link textColor" href="/bio">About the Developer</a>
+            </li>
+          
+
           </ul>
           
         </div>
