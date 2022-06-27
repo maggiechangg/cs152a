@@ -9,20 +9,6 @@ const auth = require('./routes/auth');
 const session = require("express-session"); 
 const MongoDBStore = require('connect-mongodb-session')(session);
 
-// *********************************************************** //
-//  Loading JSON datasets
-// *********************************************************** //
-const courses = require('./public/data/courses20-21.json')
-
-// *********************************************************** //
-//  Loading models
-// *********************************************************** //
-const Course = require('./models/Course')
-
-// *********************************************************** //
-//  Connecting to the database
-// *********************************************************** //
-
 const mongoose = require( 'mongoose' );
 //const mongodb_URI = 'mongodb://localhost:27017/cs103a_todo'
 const mongodb_URI = 'mongodb+srv://cs_sj:BrandeisSpr22@cluster0.kgugl.mongodb.net/timsCS153aSum22?retryWrites=true&w=majority'
@@ -47,8 +33,6 @@ const isLoggedIn = (req,res,next) => {
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var bioRouter = require('./routes/bio');
-// var ghibliRouter = require('./routes/ghibli');
-// var runesRouter = require('./routes/runes');
 
 var app = express();
 
@@ -91,11 +75,8 @@ app.use(auth);
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use("/bio", bioRouter);
-// app.use("/ghibli", ghibliRouter);
-// app.use("/runes", runesRouter);
 
-
-//Runes Page Enter a Champion
+//Runes Home Page
 const RunesHome = require('./models/Runes');
 
 app.get('/runesHome',(req,res,next) => {
@@ -147,6 +128,29 @@ app.get('/deleteChampionItem/:itemId',
     }
 )
 
+//Champion Information
+app.get('/showChampions',
+  async (req,res,next) => {
+    const champName = req.body.champName;
+    const url="http://ddragon.leagueoflegends.com/cdn/6.24.1/data/en_US/champion.json"
+    const response = await axios.get(url)
+    console.dir(response.data)
+    res.locals.champName = response.data.champName;
+    res.render('showChampions')
+})
+
+app.post('/showChampions',
+  async (req,res,next) => {
+    const ingredient = req.body.ingredient;
+    const url="http://ddragon.leagueoflegends.com/cdn/6.24.1/data/en_US/champion.json"
+    const response = await axios.get(url)
+    console.dir(response.data)
+    res.locals.ingredient = ingredient
+    res.locals.champName = response.data.champName || []
+    res.render('showChampions')
+  })
+
+
 
 //Ghibli Example API
 app.get('/ghibli',(req,res,next) => {
@@ -154,6 +158,7 @@ app.get('/ghibli',(req,res,next) => {
 })
 
 app.post('/ghibli',
+  isLoggedIn,
   async (req,res,next) => {
     try{
       const movie = req.body.movie;
@@ -169,15 +174,6 @@ app.post('/ghibli',
     }
   })
 
-app.get('/uploadDB',
-  async (req,res,next) => {
-    //await Course.deleteMany({})
-    await Course.deleteMany({});
-    await Course.insertMany(courses);
-    const num = await Course.find({}).count();
-    res.send("data uploaded: "+num)
-  }
-)
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
