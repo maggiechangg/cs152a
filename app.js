@@ -11,7 +11,9 @@ const MongoDBStore = require('connect-mongodb-session')(session);
 
 const mongoose = require( 'mongoose' );
 //const mongodb_URI = 'mongodb://localhost:27017/cs103a_todo'
-const mongodb_URI = 'mongodb+srv://cs_sj:BrandeisSpr22@cluster0.kgugl.mongodb.net/timsCS153aSum22?retryWrites=true&w=majority'
+//const mongodb_URI = 'mongodb+srv://cs_sj:BrandeisSpr22@cluster0.kgugl.mongodb.net/timsCS153aSum22?retryWrites=true&w=majority'
+const mongodb_URI = process.env.mongodb_URI;
+console.log(mongodb_URI);
 
 mongoose.connect( mongodb_URI, { useNewUrlParser: true, useUnifiedTopology: true } );
 // fix deprecation warnings
@@ -33,6 +35,7 @@ const isLoggedIn = (req,res,next) => {
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var bioRouter = require('./routes/bio');
+const aboutappRouter = require('./routes/aboutapp');
 
 var app = express();
 
@@ -75,6 +78,28 @@ app.use(auth);
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use("/bio", bioRouter);
+app.use("/aboutapp", aboutappRouter);
+
+//Show All Runes Page
+app.get('/tempRunes',
+  async (req,res,next) => {
+    const url="http://ddragon.leagueoflegends.com/cdn/12.12.1/data/en_US/runesReforged.json"
+    const response = await axios.get(url)
+    console.dir(response.data)
+    res.locals.runes = response.data
+    res.render('tempRunes')
+})
+
+app.post('/tempRunes',
+  async (req,res,next) => {
+    const url="http://ddragon.leagueoflegends.com/cdn/12.12.1/data/en_US/runesReforged.json"
+    const response = await axios.get(url)
+    console.dir(response.data)
+    res.locals.runes = response.data || []
+    res.render('tempRunes')
+  })
+
+
 
 //Runes Home Page
 const RunesHome = require('./models/Runes');
@@ -131,22 +156,21 @@ app.get('/deleteChampionItem/:itemId',
 //Champion Information
 app.get('/showChampions',
   async (req,res,next) => {
-    const champName = req.body.champName;
-    const url="http://ddragon.leagueoflegends.com/cdn/6.24.1/data/en_US/champion.json"
+    const data = req.body.data;
+    const url="https://raw.communitydragon.org/latest/plugins/rcp-be-lol-game-data/global/default/v1/champion-summary.json"
     const response = await axios.get(url)
     console.dir(response.data)
-    res.locals.champName = response.data.champName;
+    res.locals.data = response.data;
     res.render('showChampions')
 })
 
 app.post('/showChampions',
   async (req,res,next) => {
-    const ingredient = req.body.ingredient;
-    const url="http://ddragon.leagueoflegends.com/cdn/6.24.1/data/en_US/champion.json"
+    const data = req.body.data;
+    const url="https://raw.communitydragon.org/latest/plugins/rcp-be-lol-game-data/global/default/v1/champion-summary.json"
     const response = await axios.get(url)
     console.dir(response.data)
-    res.locals.ingredient = ingredient
-    res.locals.champName = response.data.champName || []
+    res.locals.data = response.data || []
     res.render('showChampions')
   })
 

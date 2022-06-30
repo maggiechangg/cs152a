@@ -1,6 +1,32 @@
-<h1> Test </h1>
-<pre>
-    <%= JSON.stringify(champName,null,5) %> 
+    
+<h1> Learn About your Champion </h1> 
+<form method="post" action="/showChampions">
+    
+    <select name="name">
+        <% for(ingr of data){%> 
+            <option>
+                <%= ingr.name %>
+            </option>
+        <% } %>
+    </select>
+    <hr>
+    <input type="submit">
+    <hr>
+
+</form> 
+
+
+
+<!-- <pre>
+    <%= JSON.stringify(data,null,5) %> 
 </pre>
+
+
+
+
+
+
+
+
 
 
