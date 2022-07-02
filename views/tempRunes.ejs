@@ -1,4 +1,59 @@
-<h1>Test </h1> 
-<pre>
+<style> 
+
+    h1{
+        color: #CAF0F8;
+        text-align: center;
+        margin: auto;
+        margin-top: 30px;
+        margin-bottom: 30px;
+    }
+
+    .cardbox{
+        background-color: #cad9f8;
+    }
+
+    .championName{
+        margin:auto;
+        margin-top: 30px;
+        color: #03045E;
+    }
+
+    .championRole{
+        margin:auto;
+        margin-bottom: 30px;
+        color: #03045E;
+    }
+
+    .button{
+        background-color: #0096C7;
+        color: #CAF0F8;
+
+    }
+
+
+</style>
+
+<h1> Learn About the Runes </h1> 
+
+
+<% for(info of runes){%> 
+    <div class="card mb-3 cardbox" style="margin: auto; max-width: 500px; ">
+        <div class="row g-0">
+          <div class="col-md-4">
+            <img src="..." class="img-fluid rounded-start" alt="...">
+          </div>
+          <div class="col-md-8">
+            <div class="card-body" style="text-align: center;">
+              <h5 class="card-title championName"> <%= info.name %> </h5>
+              <p class="card-title championRole">Click below to learn more information </p>
+              <a href="/infoRunes" class="btn button">More</a>
+            </div>
+          </div>
+        </div>
+      </div>
+<% } %>
+
+
+<!-- <pre>
     <%= JSON.stringify(runes,null,5) %> 
-</pre>
+</pre> -->

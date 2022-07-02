@@ -1,9 +1,9 @@
 <style>
 
     h1{
-        color: #cad9f8;
+        color: #ADE8F4;
         text-align: center;
-        margin-top: 100px;
+        margin-top: 40px;
     }
 
     .formStyle{
@@ -18,20 +18,37 @@
         height: 20px;
         border-top: 10px dotted;
     }
+    .signUp{
+        color: #ADE8F4;
+    }
+
+    .signUp:hover{
+        color: #ADE8F4;
+    }
+    h2{
+        color: #ADE8F4;
+        text-align: center;
+    }
 
 </style> 
 <a class="nav-link" href="/logout" style="text-align:right; font-size: 20px; color: #ADE8F4;">Log out of  <%= username %></a>
 
-<h1> Enter Champion Name </h1>
+<h1> Welcome to Home Page </h1>
 
-<hr> 
+<br> 
+<h2> 
+  For champion information, click on <a class="signUp" href="/showChampions ">Champions</a>. 
+  <br> 
+  For runes information, click on <a class="signUp" href="/tempRunes ">Runes</a>
 
-<form class="formStyle" method="post" action="/runesHome">
+</h2>
+
+<!-- <form class="formStyle" method="post" action="/runesHome">
     Enter Champion Name: <input type="text" name="championName"> 
     <input type="submit"> 
 
 </form> 
-<br> 
+<br>  -->
 
 <body>
 

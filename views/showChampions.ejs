@@ -1,11 +1,40 @@
-    
-<h1> Learn About your Champion </h1> 
-<form method="post" action="/showChampions">
+<style> 
+
+    h1{
+        color: #cad9f8;
+        text-align: center;
+        margin: auto;
+        margin-top: 30px;
+        margin-bottom: 30px;
+    }
+
+    .cardbox{
+        background-color: #cad9f8;
+    }
+
+    .championName{
+        margin:auto;
+        margin-top: 30px;
+        color: #03045E;
+    }
+
+    .championRole{
+        margin:auto;
+        margin-bottom: 30px;
+        color: #03045E;
+    }
+
+</style> 
+
+
+
+<h1> Champion List</h1> 
+<!-- <form method="post" action="/showChampions">
     
     <select name="name">
-        <% for(ingr of data){%> 
+        <% for(info of data){%> 
             <option>
-                <%= ingr.name %>
+                <%= info.name %>
             </option>
         <% } %>
     </select>
@@ -13,8 +42,23 @@
     <input type="submit">
     <hr>
 
-</form> 
+</form>  -->
 
+<% for(info of data){%> 
+    <div class="card mb-3 cardbox" style="margin: auto; max-width: 500px; ">
+        <div class="row g-0">
+          <div class="col-md-4">
+            <img src="..." class="img-fluid rounded-start" alt="...">
+          </div>
+          <div class="col-md-8">
+            <div class="card-body" style="text-align: center;">
+              <h5 class="card-title championName"> <%= info.name %> </h5>
+              <p class="card-title championRole">Role: <%= info.roles %> </p>
+            </div>
+          </div>
+        </div>
+      </div>
+<% } %>
 
 
 <!-- <pre>

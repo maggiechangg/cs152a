@@ -57,9 +57,32 @@ h2{
   color: #ADE8F4;
   text-align: center;
 }
+
+.icon{
+    font-size:100px; 
+    color:#ADE8F4;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+.iconText{
+    font-size: 100px;
+    font-family: Verdana, sans-serif;
+    margin-left: 20px;
+    margin-bottom: 10px;
+}
+
+hr{
+        color: white;
+        border: 5px solid #ADE8F4;
+        border-radius: 5px;
+    }
   
 
 </style>
+
 
 <% if (!loggedIn) {%>
   <form method="post" action="/login" style="text-align:center;  margin-top: 100px; ">
@@ -90,6 +113,9 @@ h2{
 <% } else { %>
 
 <% } %>
+
+<nobr> <i class="fa fa-leaf icon"> <p class="iconText"> Mint </p></i> </nobr>
+
 
 
 <body>
@@ -175,9 +201,9 @@ function showSlides() {
 
 </body>
 
-<h2> 
+<!-- <h2> 
   For runes and summoner info, click on <a class="signUp" href="/runesHome ">Home</a>
   <br> 
-  For specific champion information, click on <a class="signUp" href="/runesHome ">Champions</a>. 
-</h2>
+  For specific champion information, click on <a class="signUp" href="/showChampions ">Champions</a>. 
+</h2> -->
 

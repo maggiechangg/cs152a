@@ -82,6 +82,7 @@ app.use("/aboutapp", aboutappRouter);
 
 //Show All Runes Page
 app.get('/tempRunes',
+  isLoggedIn,
   async (req,res,next) => {
     const url="http://ddragon.leagueoflegends.com/cdn/12.12.1/data/en_US/runesReforged.json"
     const response = await axios.get(url)
@@ -91,6 +92,7 @@ app.get('/tempRunes',
 })
 
 app.post('/tempRunes',
+  isLoggedIn,
   async (req,res,next) => {
     const url="http://ddragon.leagueoflegends.com/cdn/12.12.1/data/en_US/runesReforged.json"
     const response = await axios.get(url)
@@ -98,6 +100,27 @@ app.post('/tempRunes',
     res.locals.runes = response.data || []
     res.render('tempRunes')
   })
+
+  app.get('/infoRunes',
+  isLoggedIn,
+  async (req,res,next) => {
+    const url="http://ddragon.leagueoflegends.com/cdn/12.12.1/data/en_US/runesReforged.json"
+    const response = await axios.get(url)
+    console.dir(response.data)
+    res.locals.runes = response.data
+    res.render('infoRunes')
+})
+
+app.post('/infoRunes',
+  isLoggedIn,
+  async (req,res,next) => {
+    const url="http://ddragon.leagueoflegends.com/cdn/12.12.1/data/en_US/runesReforged.json"
+    const response = await axios.get(url)
+    console.dir(response.data)
+    res.locals.runes = response.data || []
+    res.render('infoRunes')
+  })
+
 
 
 
