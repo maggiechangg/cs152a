@@ -6,6 +6,15 @@
 
 <h1>More Runes Information </h1> 
 
-<pre style="color: white">
-    <%= JSON.stringify(runes,null,5) %> 
-</pre>
+<% for(info of runes){%> 
+    <% for(rune of info.slots){%> 
+        <% for(subrune of rune.runes){%> 
+            <ul>
+                <li><%= subrune.key %> </li> 
+            
+            </ul> 
+            <!-- <%=JSON.stringify(subrune, null, 5)%>  -->
+        <% } %>
+    <% } %>
+<% } %>
+

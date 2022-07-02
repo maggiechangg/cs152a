@@ -29,26 +29,17 @@
 
 
 <h1> Champion List</h1> 
-<!-- <form method="post" action="/showChampions">
-    
-    <select name="name">
-        <% for(info of data){%> 
-            <option>
-                <%= info.name %>
-            </option>
-        <% } %>
-    </select>
-    <hr>
-    <input type="submit">
-    <hr>
-
-</form>  -->
 
 <% for(info of data){%> 
     <div class="card mb-3 cardbox" style="margin: auto; max-width: 500px; ">
         <div class="row g-0">
           <div class="col-md-4">
-            <img src="..." class="img-fluid rounded-start" alt="...">
+            
+            <!-- <% const image = "https://raw.communitydragon.org/latest/plugins/rcp-be-lol-game-data/global/default/assets/characters/" + info.name.replace(/\s+/g, '').toLowerCase() + "/hud/icons2d/" + info.name.replace(/\s+/g, '').toLowerCase() + "_q.png"%>
+             -->
+            <% const imagetest = "https://raw.communitydragon.org/latest/plugins/rcp-be-lol-game-data/global/default/v1/champion-icons/" + info.id + ".png" %>
+            <img src="<%=imagetest%>" class="img-fluid rounded-start" alt="...">
+            <%console.log(imagetest)%>
           </div>
           <div class="col-md-8">
             <div class="card-body" style="text-align: center;">

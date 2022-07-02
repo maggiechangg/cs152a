@@ -106,8 +106,12 @@ app.post('/tempRunes',
   async (req,res,next) => {
     const url="http://ddragon.leagueoflegends.com/cdn/12.12.1/data/en_US/runesReforged.json"
     const response = await axios.get(url)
+    // const slots = response.data.slots
     console.dir(response.data)
     res.locals.runes = response.data
+    // res.locals.slots = response.data.slots
+    // console.log(slots)
+    
     res.render('infoRunes')
 })
 
@@ -116,9 +120,13 @@ app.post('/infoRunes',
   async (req,res,next) => {
     const url="http://ddragon.leagueoflegends.com/cdn/12.12.1/data/en_US/runesReforged.json"
     const response = await axios.get(url)
+    // const slots = response.data.slots
     console.dir(response.data)
     res.locals.runes = response.data || []
+    // res.locals.slots = response.data.slots  || []
+    // console.log(slots)
     res.render('infoRunes')
+
   })
 
 
