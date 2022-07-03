@@ -106,11 +106,8 @@ app.post('/tempRunes',
   async (req,res,next) => {
     const url="http://ddragon.leagueoflegends.com/cdn/12.12.1/data/en_US/runesReforged.json"
     const response = await axios.get(url)
-    // const slots = response.data.slots
     console.dir(response.data)
     res.locals.runes = response.data
-    // res.locals.slots = response.data.slots
-    // console.log(slots)
     
     res.render('infoRunes')
 })
@@ -120,17 +117,11 @@ app.post('/infoRunes',
   async (req,res,next) => {
     const url="http://ddragon.leagueoflegends.com/cdn/12.12.1/data/en_US/runesReforged.json"
     const response = await axios.get(url)
-    // const slots = response.data.slots
     console.dir(response.data)
     res.locals.runes = response.data || []
-    // res.locals.slots = response.data.slots  || []
-    // console.log(slots)
     res.render('infoRunes')
 
   })
-
-
-
 
 //Runes Home Page
 const RunesHome = require('./models/Runes');
@@ -204,8 +195,6 @@ app.post('/showChampions',
     res.locals.data = response.data || []
     res.render('showChampions')
   })
-
-
 
 //Ghibli Example API
 app.get('/ghibli',(req,res,next) => {

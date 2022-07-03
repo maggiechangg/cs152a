@@ -1,20 +1,78 @@
 <style>
     h1{
         color: #cad9f8;
+        text-align: center;
+        flex-direction: column;
     }
+    
+    h2{
+        color: #cad9f8;
+        text-align: center;
+        flex-direction: column;
+    }
+
+    .name{
+        color: #cad9f8;
+        text-align: center;
+        flex-direction: column;
+    }
+
+    .picture{
+        display: inline;
+        width: 100px;
+        white-space: nowrap;
+    }
+
+    #images  {
+        width: 1800px;
+        height: 400px;
+        margin-left:10%;
+        margin-right:10%;
+        color: #cad9f8;
+
+    }
+    #images img {
+        float: left;
+    }
+
+    .topPage{
+        color: #cad9f8;
+        text-align: center;
+        flex-direction: column;
+    }
+
+    hr{
+        color: #ADE8F4;
+        height: 10px;
+        border-top: 4px solid;
+    }
+
+
+
+
 </style> 
+<div id="topPage"></div> 
 
 <h1>More Runes Information </h1> 
+<hr> 
 
-<% for(info of runes){%> 
-    <% for(rune of info.slots){%> 
-        <% for(subrune of rune.runes){%> 
-            <ul>
-                <li><%= subrune.key %> </li> 
-            
-            </ul> 
-            <!-- <%=JSON.stringify(subrune, null, 5)%>  -->
+        <% for(info of runes){%> 
+            <h2> <%= info.name %>   </h2>
+        
+            <% for(rune of info.slots.slice(0,1)){%> 
+                <div class="row">
+                    <div class="col-md-4" id="images">
+                <% for(subrune of rune.runes){%> 
+                    <h4> <%= subrune.name %> </h4>
+                    <br> 
+                    <% const specificrunes = "https://ddragon.canisback.com/img/perk-images/Styles/" + info.key + "/" + subrune.key + "/" + subrune.key + ".png"%>
+                    <img src="<%=specificrunes%>" class="rounded-start img-responsive" alt="...">
+                <% } %>
+                    </div>
+                </div>
+            <% } %>
+            <br> 
+            <a id="link" href="#topPage" class="topPage">Go back to top of page</a> <br> 
+            <hr> 
         <% } %>
-    <% } %>
-<% } %>
 

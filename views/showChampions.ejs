@@ -30,13 +30,11 @@
 
 <h1> Champion List</h1> 
 
-<% for(info of data){%> 
+<% for(info of data.slice(1)){%> 
     <div class="card mb-3 cardbox" style="margin: auto; max-width: 500px; ">
         <div class="row g-0">
           <div class="col-md-4">
             
-            <!-- <% const image = "https://raw.communitydragon.org/latest/plugins/rcp-be-lol-game-data/global/default/assets/characters/" + info.name.replace(/\s+/g, '').toLowerCase() + "/hud/icons2d/" + info.name.replace(/\s+/g, '').toLowerCase() + "_q.png"%>
-             -->
             <% const imagetest = "https://raw.communitydragon.org/latest/plugins/rcp-be-lol-game-data/global/default/v1/champion-icons/" + info.id + ".png" %>
             <img src="<%=imagetest%>" class="img-fluid rounded-start" alt="...">
             <%console.log(imagetest)%>
@@ -51,10 +49,10 @@
       </div>
 <% } %>
 
-
+<!-- <%= JSON.stringify(data.length) %>  -->
 <!-- <pre>
     <%= JSON.stringify(data,null,5) %> 
-</pre>
+</pre> -->
 
 
 
