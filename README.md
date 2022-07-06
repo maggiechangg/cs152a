@@ -5,7 +5,7 @@ Welcome to Mint! Mint is an information web app for League of Legends.
 # 📌 Overview 
 
 ## ✏️ Features:
-This music recording app will have the following features: 
+This League of Legends app will have the following features: 
 * Champion List with roles
 * List of the major runes
 * Add and delete Champions
