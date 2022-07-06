@@ -1,9 +1,8 @@
 <style>
-
     h1{
-        color: #ADE8F4;
+        color: #cad9f8;
         text-align: center;
-        margin-top: 40px;
+        flex-direction: column;
     }
 
     .formStyle{
@@ -11,124 +10,16 @@
         text-align: center;
         height: 10px;
         margin-bottom: 50px;
-    }
-
-    hr{
-        color: white;
-        height: 20px;
-        border-top: 10px dotted;
-    }
-    .signUp{
-        color: #ADE8F4;
-    }
-
-    .signUp:hover{
-        color: #ADE8F4;
-    }
-    h2{
-        color: #ADE8F4;
-        text-align: center;
+        margin-top: 40px;
     }
 
 </style> 
-<a class="nav-link" href="/logout" style="text-align:right; font-size: 20px; color: #ADE8F4;">Log out of  <%= username %></a>
 
-<h1> Welcome to Home Page </h1>
+<h1> Search Champion and Delete</h1>
 
-<br> 
-<h2> 
-  For champion information, click on <a class="signUp" href="/showChampions ">Champions</a>. 
-  <br> 
-  For runes information, click on <a class="signUp" href="/tempRunes ">Runes</a>
-
-</h2>
-
-<!-- <form class="formStyle" method="post" action="/runesHome">
+<form class="formStyle" method="post" action="/runesHome">
     Enter Champion Name: <input type="text" name="championName"> 
-    <input type="submit"> 
+    <input type="submit" style="background-color:#cad9f8"> 
 
 </form> 
-<br>  -->
-
-<body>
-
-    <div class="slideshow-container">
-    
-    <div class="mySlides ">
-      <div class="numbertext"></div>
-      <img src="https://ddragon.leagueoflegends.com/cdn/img/champion/splash/Akali_6.jpg" style="width:100%; border-radius: 50%;">
-    </div>
-    
-    <div class="mySlides ">
-      <div class="numbertext"></div>
-      <img src="https://ddragon.leagueoflegends.com/cdn/img/champion/splash/Ahri_2.jpg" style="width:100%; border-radius: 50%">
-    </div>
-    
-    <div class="mySlides ">
-      <div class="numbertext"></div>
-      <img src="https://ddragon.leagueoflegends.com/cdn/img/champion/splash/Lux_7.jpg" style="width:100%; border-radius: 50%">
-    </div>
-    
-    <div class="mySlides ">
-      <div class="numbertext"></div>
-      <img src="https://ddragon.leagueoflegends.com/cdn/img/champion/splash/Evelynn_7.jpg" style="width:100%; border-radius: 50%">
-    </div>
-    
-    <div class="mySlides ">
-      <div class="numbertext"></div>
-      <img src="https://ddragon.leagueoflegends.com/cdn/img/champion/splash/Leblanc_19.jpg" style="width:100%; border-radius: 50%">
-    </div>
-    
-    <div class="mySlides ">
-      <div class="numbertext"></div>
-      <img src="https://ddragon.leagueoflegends.com/cdn/img/champion/splash/Kaisa_26.jpg" style="width:100%; border-radius: 50%">
-    </div>
-    
-    <div class="mySlides ">
-      <div class="numbertext"></div>
-      <img src="https://ddragon.leagueoflegends.com/cdn/img/champion/splash/Sona_6.jpg" style="width:100%; border-radius: 50%">
-    </div>
-    
-    <div class="mySlides ">
-      <div class="numbertext"></div>
-      <img src="https://ddragon.leagueoflegends.com/cdn/img/champion/splash/Caitlyn_6.jpg" style="width:100%; border-radius: 50%">
-    </div>
-    
-    
-    </div>
-    <br>
-    
-    <div style="text-align:center">
-      <span class="dot"></span> 
-      <span class="dot"></span> 
-      <span class="dot"></span> 
-      <span class="dot"></span> 
-      <span class="dot"></span> 
-      <span class="dot"></span> 
-      <span class="dot"></span>
-      <span class="dot"></span> 
-    </div>
-    
-    <script>
-    let slideIndex = 0;
-    showSlides();
-    
-    function showSlides() {
-      let i;
-      let slides = document.getElementsByClassName("mySlides");
-      let dots = document.getElementsByClassName("dot");
-      for (i = 0; i < slides.length; i++) {
-        slides[i].style.display = "none";  
-      }
-      slideIndex++;
-      if (slideIndex > slides.length) {slideIndex = 1}    
-      for (i = 0; i < dots.length; i++) {
-        dots[i].className = dots[i].className.replace(" active", "");
-      }
-      slides[slideIndex-1].style.display = "block";  
-      dots[slideIndex-1].className += " active";
-      setTimeout(showSlides, 4500); // Change image every 2 seconds
-    }
-    </script>
-    
-    </body>
+<br> 

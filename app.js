@@ -123,7 +123,7 @@ app.post('/infoRunes',
 
   })
 
-//Runes Home Page
+//Search and Delete Model
 const RunesHome = require('./models/Runes');
 
 app.get('/runesHome',(req,res,next) => {
@@ -174,6 +174,12 @@ app.get('/deleteChampionItem/:itemId',
       }
     }
 )
+
+//Home Page
+app.get('/homePage',(req,res,next) => {
+  res.render('homePage')
+})
+
 
 //Champion Information
 app.get('/showChampions',

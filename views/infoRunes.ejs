@@ -46,11 +46,12 @@
         height: 10px;
         border-top: 4px solid;
     }
+     html {  
+      scroll-behavior: smooth;  
+    }
 
+ </style> 
 
-
-
-</style> 
 <div id="topPage"></div> 
 
 <h1>More Runes Information </h1> 
@@ -65,8 +66,8 @@
                 <% for(subrune of rune.runes){%> 
                     <h4> <%= subrune.name %> </h4>
                     <br> 
-                    <% const specificrunes = "https://ddragon.canisback.com/img/perk-images/Styles/" + info.key + "/" + subrune.key + "/" + subrune.key + ".png"%>
-                    <img src="<%=specificrunes%>" class="rounded-start img-responsive" alt="...">
+                    <% const specificrunestest = "https://ddragon.canisback.com/img/" + subrune.icon%>
+                    <img src="<%=specificrunestest%>" class="rounded-start img-responsive" alt="...">
                 <% } %>
                     </div>
                 </div>
